@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+/dist
+dist-ssr
+*.local
+
+# SQLite Cache Databases
+apexos_cache.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,535 @@
+/* ====================================================================
+   APEXOS DESIGN SYSTEM (index.css)
+   Telemetry Pit-Wall Dark Mode Theme (Carbon, Glassmorphism, Neon Accents)
+   ==================================================================== */
+
+:root {
+  /* Color System */
+  --bg-dark: #080a0f;
+  --bg-card: #10141d;
+  --bg-card-hover: #171d2b;
+  --border: #1c2436;
+  --border-focus: #283750;
+  
+  --f1-red: #00A19B; /* Mapped to Petronas Teal */
+  --f1-red-glow: rgba(0, 161, 155, 0.25);
+  --cyan: #00ffec; /* Neon Petronas Teal / Cyber Cyan */
+  --cyan-glow: rgba(0, 255, 236, 0.15);
+  --green: #00ff87;
+  --green-glow: rgba(0, 255, 135, 0.15);
+  --yellow: #ffd300;
+  --yellow-glow: rgba(255, 211, 0, 0.15);
+  --purple: #d126ff;
+  --purple-glow: rgba(209, 38, 255, 0.15);
+  
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: 'Orbitron', 'Courier New', Courier, monospace;
+}
+
+/* Base Styles & Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 161, 155, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(200, 204, 206, 0.04) 0%, transparent 40%),
+    linear-gradient(rgba(255, 255, 255, 0.004) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.004) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Typography Helper Classes */
+.font-telemetry {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* Card layout & Glassmorphic boxes */
+.telemetry-card {
+  background: rgba(16, 20, 29, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 204, 206, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.telemetry-card:hover {
+  border-color: rgba(0, 161, 155, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(0, 161, 155, 0.12);
+  transform: translateY(-3px);
+}
+
+.telemetry-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+}
+
+.telemetry-card.red-header::before { background: var(--f1-red); }
+.telemetry-card.cyan-header::before { background: var(--cyan); }
+.telemetry-card.green-header::before { background: var(--green); }
+.telemetry-card.yellow-header::before { background: var(--yellow); }
+.telemetry-card.purple-header::before { background: var(--purple); }
+
+.carbon-weave {
+  background-image: 
+    linear-gradient(45deg, rgba(20,24,35,0.4) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(20,24,35,0.4) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(20,24,35,0.4) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(20,24,35,0.4) 75%);
+  background-size: 6px 6px;
+  background-position: 0 0, 0 3px, 3px -3px, -3px 0px;
+}
+
+/* Glow Effects */
+.glow-red { text-shadow: 0 0 10px var(--f1-red-glow); }
+.glow-cyan { text-shadow: 0 0 10px var(--cyan-glow); }
+.glow-green { text-shadow: 0 0 10px var(--green-glow); }
+
+/* F1 Styled UI elements */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.badge-red {
+  background-color: rgba(225, 6, 0, 0.1);
+  color: var(--f1-red);
+  border-color: rgba(225, 6, 0, 0.3);
+}
+
+.badge-cyan {
+  background-color: rgba(0, 240, 255, 0.1);
+  color: var(--cyan);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.badge-green {
+  background-color: rgba(0, 255, 135, 0.1);
+  color: var(--green);
+  border-color: rgba(0, 255, 135, 0.3);
+}
+
+.badge-yellow {
+  background-color: rgba(255, 211, 0, 0.1);
+  color: var(--yellow);
+  border-color: rgba(255, 211, 0, 0.3);
+}
+
+/* Control slider custom styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(28, 36, 54, 0.8);
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #00ffec; /* Neon Petronas Teal */
+  border: 2px solid #080a0f;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 236, 0.6);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 15px rgba(0, 255, 236, 0.9);
+}
+
+/* Interactive Tabs styling */
+.nav-tab {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-tab:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.nav-tab.active {
+  color: var(--f1-red);
+  border-bottom-color: var(--f1-red);
+  background-color: rgba(225, 6, 0, 0.03);
+}
+
+/* Dropdown selector */
+select {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 6px;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+select:focus {
+  border-color: var(--border-focus);
+}
+
+/* Live indicators and telemetry feeds */
+.led-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.led-green {
+  background-color: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+
+.led-red {
+  background-color: var(--f1-red);
+  box-shadow: 0 0 8px var(--f1-red);
+}
+
+.led-yellow {
+  background-color: var(--yellow);
+  box-shadow: 0 0 8px var(--yellow);
+}
+
+/* Utility Layouts */
+.grid-cols-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Grid overlay background to resemble telemetry screens */
+.telemetry-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 15px 15px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Scanning line animation */
+.scanner-line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: scan 4s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes scan {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+/* Glass panel and hover glow effects */
+.glass-panel {
+  background-color: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.interactive-card:hover {
+  transform: scale(1.015);
+  border-color: rgba(225, 6, 0, 0.5);
+  box-shadow: 0 0 20px rgba(225, 6, 0, 0.15);
+}
+
+.data-flicker:hover {
+  animation: data-flicker-anim 0.2s 3;
+}
+
+@keyframes data-flicker-anim {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.neon-border-red {
+  box-shadow: 0 0 15px rgba(225, 6, 0, 0.2);
+  border-color: rgba(225, 6, 0, 0.5);
+}
+
+.pulse-led {
+  animation: pulse-red-led 2s infinite;
+}
+
+@keyframes pulse-red-led {
+  0% { box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(225, 6, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(225, 6, 0, 0); }
+}
+
+.heartbeat-glow {
+  animation: heartbeat-pulse 2s infinite;
+}
+
+@keyframes heartbeat-pulse {
+  0% { filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8)); }
+  15% { filter: drop-shadow(0 0 15px rgba(0, 240, 255, 1)); }
+  30% { filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8)); }
+  45% { filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.9)); }
+  100% { filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8)); }
+}
+
+.live-pulse {
+  animation: text-pulse 2s infinite;
+}
+
+@keyframes text-pulse {
+  0%, 100% { opacity: 1; text-shadow: 0 0 8px rgba(225, 6, 0, 0.5); }
+  50% { opacity: 0.7; text-shadow: 0 0 2px rgba(225, 6, 0, 0.2); }
+}
+
+/* Cockpit controls segmented layout */
+.switch-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.675rem;
+  transition: all 0.2s;
+}
+
+.switch-btn.active {
+  background: var(--f1-red);
+  color: #fff;
+  border-color: var(--f1-red);
+  box-shadow: 0 0 10px var(--f1-red-glow);
+}
+
+.switch-btn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.terminal-logs::-webkit-scrollbar {
+  width: 4px;
+}
+.terminal-logs::-webkit-scrollbar-thumb {
+  background: var(--border-focus);
+}
+
+/* ====================================================================
+   APEXOS CYBER-BRUTALIST & TELEMETRY STYLING EXTENSIONS
+   ==================================================================== */
+
+/* Animated Scan Beam Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -100%; left: 0; right: 0; height: 200%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 161, 155, 0.03) 50%, transparent);
+  z-index: -1;
+  animation: scan-beam 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan-beam {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50%); }
+}
+
+/* Skew layout helpers for cockpit-inspired designs */
+.skew-container {
+  transform: skewX(-12deg);
+}
+
+.unskew-content {
+  transform: skewX(12deg);
+}
+
+/* Typing effect for telemetry terminals */
+.type-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 1s steps(40, end);
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Sequential boot load animations */
+.boot-seq {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: scan-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scan-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Custom preserve aspect ratio for telemetry grids */
+.preserve-aspect-ratio-none {
+  vector-effect: non-scaling-stroke;
+}
+
+.neon-border-teal {
+  border-bottom: 2.5px solid var(--f1-red);
+  box-shadow: 0 4px 12px rgba(0, 161, 155, 0.2);
+}
+
+/* Premium HUD, LED and RPM animations */
+.led-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.led-green {
+  background-color: #00ff87;
+  box-shadow: 0 0 8px #00ff87;
+}
+.led-red {
+  background-color: #ff1801;
+  box-shadow: 0 0 8px #ff1801;
+}
+.led-teal {
+  background-color: #00ffec;
+  box-shadow: 0 0 8px #00ffec;
+}
+.led-purple {
+  background-color: #d126ff;
+  box-shadow: 0 0 8px #d126ff;
+}
+
+.rpm-grid {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+  height: 6px;
+}
+.rpm-segment {
+  flex-grow: 1;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1px;
+  transition: all 0.15s ease;
+}
+.rpm-segment.active-green {
+  background: #00ff87;
+  box-shadow: 0 0 6px rgba(0, 255, 135, 0.8);
+}
+.rpm-segment.active-yellow {
+  background: #ffd300;
+  box-shadow: 0 0 6px rgba(255, 211, 0, 0.8);
+}
+.rpm-segment.active-red {
+  background: #ff1801;
+  box-shadow: 0 0 6px rgba(255, 24, 1, 0.8);
+}
+
+.floating-hud {
+  background: rgba(10, 13, 20, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 236, 0.15);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
