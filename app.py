@@ -875,7 +875,6 @@ def run_server():
     # 1. Ingest F1 data from CSVs locally into SQlite cache file
     init_db()
     
-<<<<<<< HEAD
     # 2. Start HTTP server on port from environment variable or 8000, binding to 0.0.0.0 for cloud deployment
     port = int(os.environ.get("PORT", 8000))
     server_address = ('0.0.0.0', port)
@@ -883,15 +882,6 @@ def run_server():
     print("\n==================================================")
     print("ApexOS: Offline Telemetry Backend Server Started!")
     print(f"Address: http://0.0.0.0:{port}")
-=======
-    # 2. Start HTTP server on port 8000
-    server_address = ('127.0.0.1', 8000)
-    httpd = HTTPServer(server_address, ApexOSRequestHandler)
-    print("\n==================================================")
-    print("ApexOS: Offline Telemetry Backend Server Started!")
-    print("Address: http://127.0.0.1:8000")
-    print("Swagger docs fallback: open any API url above to query")
->>>>>>> 0c350e62c8b8888800a70d98a33e71aabbeff455
     print("==================================================\n")
     try:
         httpd.serve_forever()
